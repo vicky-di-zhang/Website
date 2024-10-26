@@ -59,37 +59,102 @@
     </div>
 
     <div class="content">
-        <div class="season">
-          <div class="d-flex justify-content-between align-items-center">
-            <h3>Spring</h3>  
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center">
+            <h3>Spring</h3> 
             <a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="#!">All Posts...</a>
-          
+        </div>
+    
+        {% for post in spring %}
+          <div class="d-flex justify-content-between align-items-center mb-1">
+                <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none">
+                    <h4 class="mb-0">{{ post.title }}</h4>
+                </a>
 
+                <div class="d-flex align-items-center">
+                    <h5 class="mb-0 me-3">Posted on {{ post.date }}</h5>
+                    {% if logged_in %}
+                    <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                    {% endif %}
+                </div>
           </div>
-          <div>
-            <p>Article about Spring...</p>
+        {% endfor %}
+      </div>
+      <hr>
+
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center">
+            <h3>Summer</h3> 
+            <a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="#!">All Posts...</a>
+        </div>
+    
+  
+        {% for post in summer %}
+          <div class="d-flex justify-content-between align-items-center mb-1">
+                  <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none">
+                      <h4 class="mb-0">{{ post.title }}</h4>
+                  </a>
+
+                  <div class="d-flex align-items-center">
+                      <h5 class="mb-0 me-3">Posted on {{ post.date }}</h5>
+                      {% if logged_in %}
+                      <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                      {% endif %}
+                  </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
+
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center">
+            <h3>Autumn</h3> 
+            <a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="#!">All Posts...</a>
+        </div>
+    
+        {% for post in autumn %}
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+
+              <div class="d-flex align-items-center">
+                  <h5 class="mb-0 me-3">Posted on {{ post.date }}</h5>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
           </div>
 
-           
-            
+        {% endfor %}
+      </div>
+      <hr>
+      
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center">
+            <h3>Winter</h3> 
+            <a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="#!">All Posts...</a>
         </div>
-        <hr>
-        <div class="season">
-            <h3>Summer</h3>
-            <p>Article about Summer...</p>
-        </div>
-        <hr>
-        <div class="season">
-            <h3>Autumn</h3>
-            <p>Article about Autumn...</p>
-        </div>
-        <hr>
-        <div class="season">
-            <h3>Winter</h3>
-            <p>Article about Winter...</p>
-        </div>
+  
+        {% for post in winter %}
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+
+              <div class="d-flex align-items-center">
+                  <h5 class="mb-0 me-3">Posted on {{ post.date }}</h5>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+    
+    
     </div>
-</div>
+  </div>
 </div>
 
 <div class="container" style="padding:2rem; justify-items:center;">
@@ -252,7 +317,7 @@ style="background-color: rgb(235, 69, 95);"
     {% if current_user.id == 1 %}
     <h2>✨ Plan  <a
         class="btn btn-primary float-right"
-        href="{{url_for('add_new_post')}}"
+        href="{{url_for('add_new_plan')}}"
         >+</a
       ></h2>
     {% else %}
