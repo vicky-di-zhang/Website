@@ -6,7 +6,7 @@ from flask_gravatar import Gravatar
 from flask_login import UserMixin, login_user, LoginManager, current_user, logout_user
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship, DeclarativeBase, Mapped, mapped_column
-from sqlalchemy import Integer, String, Text
+from sqlalchemy import Integer, String, Text, func
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
 # Import your forms from the forms.py
@@ -77,7 +77,7 @@ class BlogPost(db.Model):
     body: Mapped[str] = mapped_column(Text, nullable=False)
     img_url: Mapped[str] = mapped_column(String(250), nullable=True)
     category: Mapped[str] = mapped_column(String(250), nullable=False)
-    sub_category: Mapped[str] = mapped_column(String(250), nullable=False)
+    sub_category: Mapped[str] = mapped_column(String(250))
     comments = relationship("Comment", back_populates="parent_blog_post")
 
 class PlanPost(db.Model):
@@ -113,16 +113,13 @@ with app.app_context():
     db.create_all()
 
 
-def select_posts(posts, category, sub_category, months):
+def select_posts(posts, category, sub_category):
     filtered_posts = []
     if posts != None:
         for post in posts:
             if post.category == category and post.sub_category == sub_category:
                 filtered_posts.append(post)
-            elif post.category == 'sparkle':
-                for m in months:
-                    if m in post.date:
-                        filtered_posts.append(post)
+
     return filtered_posts
 
 
@@ -189,10 +186,34 @@ def logout():
 @app.route('/')
 def get_all_posts():
     all_posts = db.session.execute(db.select(BlogPost)).scalars().all()
-    spring = select_posts(posts=all_posts, category='sparkle', sub_category='spring', months=['March','April','May'])[::-1][:3]
-    summer = select_posts(posts=all_posts, category='sparkle', sub_category='summer', months=['June','July','August','September'])[::-1][:3]
-    winter = select_posts(posts=all_posts, category='sparkle', sub_category='winter', months=['January','February','December','November'])[::-1][:3]
-    return render_template("index.html", spring=spring,summer=summer,winter=winter, logged_in=current_user.is_authenticated)
+    spring = select_posts(posts=all_posts, category='sparkle', sub_category='spring')[::-1][:3]
+    summer = select_posts(posts=all_posts, category='sparkle', sub_category='summer')[::-1][:3]
+    winter = select_posts(posts=all_posts, category='sparkle', sub_category='winter')[::-1][:3]
+    autumn = select_posts(posts=all_posts, category='sparkle', sub_category='autumn')[::-1][:3]
+    return render_template("index.html", spring=spring,summer=summer,winter=winter,autumn=autumn, logged_in=current_user.is_authenticated)
+
+
+@app.route('/posts_list/<category>/<sub_category>/<logo>', methods=["GET", "POST"])
+def get_select_posts(category, sub_category, logo):
+    all_posts = db.session.execute(db.select(BlogPost)).scalars().all()
+    posts = select_posts(posts=all_posts, category=category, sub_category=sub_category)
+    return render_template("post-list.html", all_posts= posts, logo=logo, category=category.capitalize(), sub_category=sub_category.capitalize(), logged_in=current_user.is_authenticated)
+
+
+@app.route('/year_posts/<category>/<year>', methods=["GET", "POST"])
+def get_year_posts(category, year):
+    condition = '%'+ year
+    all_posts = db.session.execute(db.select(BlogPost).where(BlogPost.date.like(condition))).scalars().all()
+    print(all_posts)
+    spring = select_posts(posts=all_posts, category='sparkle', sub_category='spring')[::-1]
+    print(spring)
+    summer = select_posts(posts=all_posts, category='sparkle', sub_category='summer')[::-1]
+    winter = select_posts(posts=all_posts, category='sparkle', sub_category='winter')[::-1]
+    autumn = select_posts(posts=all_posts, category='sparkle', sub_category='autumn')[::-1]
+    crochet = select_posts(posts=all_posts, category='hobby', sub_category='crochet')[::-1]
+    sewing = select_posts(posts=all_posts, category='hobby', sub_category='sewing')[::-1]
+    sashiko = select_posts(posts=all_posts, category='hobby', sub_category='sashiko')[::-1]
+    return render_template("year-posts.html", spring=spring,summer=summer,winter=winter,autumn=autumn,crochet=crochet,sewing=sewing,sashiko=sashiko, category=category.capitalize(), year=year,logged_in=current_user.is_authenticated)
 
 
 # TODO: Allow logged-in users to comment on posts

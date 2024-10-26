@@ -9,7 +9,7 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="site-heading">
-          <h1>Vicky's World</h1>
+          <h1>✨  {{category}}</h1>
           <br>
           <span class="subheading">A collection of big small things.</span>
         </div>
@@ -18,27 +18,18 @@
   </div>
 </header>
 
-<!-- Sparkle-->
- <div 
- class="masthead section1"
- style="background-color: rgb(20,45,80);"
- >
- <div class="row gx-4 gx-lg-5 justify-content-center">
-  <div class="col-md-10 col-lg-8 col-xl-7 text-center  mb-5">
-    <div class="site-heading">
-      {% if current_user.id == 1 %}
-      <h2>✨ Sparkle   <a
-          class="btn btn-primary float-right"
-          href="{{url_for('add_new_post')}}"
-          >+</a
-        ></h2>
-      {% else %}
-      <h2>✨ Sparkle</h2>
-        {% endif %}
-      <br>
-      <span class="subheading">四季更迭......balabala</span>
-    </div>
-  </div>
+{% if category == 'Sparkle' %}
+<div 
+class="masthead section1"
+style="background-color: rgb(20,45,80);"
+>
+<div class="row gx-4 gx-lg-5 justify-content-center">
+ <div class="col-md-10 col-lg-8 col-xl-7 text-center  mb-5">
+   <div class="site-heading">
+     <h2>{{year}}  ✨</h2>
+     <br>
+   </div>
+ </div>
 </div>
 
 <div class="section_container  px-4 px-lg-5">
@@ -72,7 +63,7 @@
                 </a>
 
                 <div class="d-flex align-items-center">
-                    <h5 class="mb-0 me-3"> {{ post.date }}</h5>
+                    <h5 class="mb-0 me-3">Posted on {{ post.date }}</h5>
                     {% if logged_in %}
                     <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
                     {% endif %}
@@ -96,7 +87,7 @@
                   </a>
 
                   <div class="d-flex align-items-center">
-                      <h5 class="mb-0 me-3"> {{ post.date }}</h5>
+                      <h5 class="mb-0 me-3">Posted on {{ post.date }}</h5>
                       {% if logged_in %}
                       <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
                       {% endif %}
@@ -119,7 +110,7 @@
               </a>
 
               <div class="d-flex align-items-center">
-                  <h5 class="mb-0 me-3"> {{ post.date }}</h5>
+                  <h5 class="mb-0 me-3">Posted on {{ post.date }}</h5>
                   {% if logged_in %}
                   <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
                   {% endif %}
@@ -143,7 +134,7 @@
               </a>
 
               <div class="d-flex align-items-center">
-                  <h5 class="mb-0 me-3"> {{ post.date }}</h5>
+                  <h5 class="mb-0 me-3">Posted on {{ post.date }}</h5>
                   {% if logged_in %}
                   <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
                   {% endif %}
@@ -159,14 +150,20 @@
 
 <div class="container" style="padding:2rem; justify-items:center;">
   <div class="row">
-    <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233); font-size:1.5rem;" href="{{ url_for('get_year_posts', category='sparkle', year='2024')}}">2024</a> </div>
-    <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233); font-size:1.5rem;" href="#!">2025</a> </div>
-    <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233); font-size:1.5rem;" href="#!">2026</a> </div> 
+    {% if year != '2024' %}
+    <div class="col-6"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233); font-size:1.5rem;" href="#!">2024</a> </div>
+    {% endif %}
+    {% if year != '2025' %}
+    <div class="col-6"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233); font-size:1.5rem;" href="#!">2025</a> </div>
+    {% endif %}
+    {% if year != '2026' %}
+    <div class="col-6"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233); font-size:1.5rem;" href="#!">2026</a> </div>
+    {% endif %}
   </div>  
   </div>
 </div>
 
-
+{% elif category == 'Hobby' %}
 <!-- Hobby -->
  <div 
  class="masthead section2"
@@ -236,6 +233,8 @@
   </div>
 </div>
 
+
+{% elif category == 'Self-explore' %}
 <!--  Self-Explore -->
 <div 
 class="masthead section3"
@@ -306,6 +305,8 @@ style="background-color: rgb(252, 255, 231);"
  </div>
 </div>
 
+
+{% elif category == 'Plan' %}
 <!-- Plan -->
 <div 
 class="masthead section4"
@@ -368,5 +369,5 @@ style="background-color: rgb(235, 69, 95);"
  </div>  
  </div>
 </div>
-
+{% endif %}
 {% include "footer.html" %}
