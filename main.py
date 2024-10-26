@@ -113,6 +113,20 @@ with app.app_context():
     db.create_all()
 
 
+def select_posts(posts, category, sub_category, months):
+    filtered_posts = []
+    if posts != None:
+        for post in posts:
+            if post.category == category and post.sub_category == sub_category:
+                filtered_posts.append(post)
+            elif post.category == 'sparkle':
+                for m in months:
+                    if m in post.date:
+                        filtered_posts.append(post)
+    return filtered_posts
+
+
+
 # Use Werkzeug to hash the user's password when creating a new user.
 @app.route('/register',methods=["GET","POST"])
 def register():
@@ -171,13 +185,14 @@ def logout():
     return redirect(url_for('get_all_posts'))
 
 
+
 @app.route('/')
 def get_all_posts():
-    posts_sparkle = db.session.execute(db.select(BlogPost).where(BlogPost.category =='Sparkle')).scalars().all()
-    posts_hobby = db.session.execute(db.select(BlogPost).where(BlogPost.category =='Hobby')).scalars().all()
-    posts_self = db.session.execute(db.select(BlogPost).where(BlogPost.category =='Self-explore')).scalars().all()
-    posts_plan = db.session.execute(db.select(BlogPost).where(BlogPost.category =='Plan')).scalars().all()
-    return render_template("index.html", sparkle=posts_sparkle,hobby=posts_hobby,self=posts_self,plan=posts_plan, logged_in=current_user.is_authenticated)
+    all_posts = db.session.execute(db.select(BlogPost)).scalars().all()
+    spring = select_posts(posts=all_posts, category='sparkle', sub_category='spring', months=['March','April','May'])[::-1][:3]
+    summer = select_posts(posts=all_posts, category='sparkle', sub_category='summer', months=['June','July','August','September'])[::-1][:3]
+    winter = select_posts(posts=all_posts, category='sparkle', sub_category='winter', months=['January','February','December','November'])[::-1][:3]
+    return render_template("index.html", spring=spring,summer=summer,winter=winter, logged_in=current_user.is_authenticated)
 
 
 # TODO: Allow logged-in users to comment on posts
