@@ -13,10 +13,10 @@ class MultiCheckboxField(SelectMultipleField):
     
 # WTForm for creating a blog post
 class CreatePostForm(FlaskForm):
-    title = StringField("Blog Post Title", validators=[DataRequired()])
-    img = FileField("Upload Image", validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg', 'gif','heic','mov'], 'Images only!')])
+    title = StringField("Title", validators=[DataRequired()])
+    img = FileField("Upload Background Image", validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg', 'gif','heic','mov'], 'Images only!')])
     main_option = SelectField(
-        'Choose a Category', 
+        'Category', 
         choices=[
             ('sparkle', 'Sparkle'),
             ('hobby', 'Hobby'),
@@ -25,9 +25,9 @@ class CreatePostForm(FlaskForm):
         ],
         validators=[DataRequired()]
     )
-    sub_option = SelectField('Choose a Sub-category ', choices=[])
-    body = CKEditorField("Blog Content", validators=[DataRequired()])
-    submit = SubmitField("Submit Post")
+    sub_option = SelectField('Sub-category ', choices=[])
+    body = CKEditorField("Content", validators=[DataRequired()])
+    submit = SubmitField("Submit")
 
 
 #  Create a RegisterForm to register new users
@@ -59,10 +59,10 @@ class LoginbuttonForm(FlaskForm):
 
 
 class CreatePlanForm(FlaskForm):
-    title = StringField("Blog Post Title", validators=[DataRequired()])
-    img = FileField("Upload Image", validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg', 'gif','heic','mov'], 'Images only!')])
+    title = StringField("Title", validators=[DataRequired()])
+    img = FileField("Upload Background Image", validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg', 'gif','heic','mov'], 'Images only!')])
     main_option = SelectField(
-        'Choose a Category', 
+        'Category', 
         choices=[
             ('sparkle', 'Sparkle'),
             ('hobby', 'Hobby'),
@@ -71,14 +71,14 @@ class CreatePlanForm(FlaskForm):
         ],
         validators=[DataRequired()]
     )
-    sub_option = SelectField('Choose a Sub-category ', choices=[])
-    choices = MultiCheckboxField('Plan to do on:', 
-            choices=[('1', 'January'), ('2', 'February'), ('3', 'March'), ('4', 'April'), ('5', 'May'), ('6', 'June'), ('7', 'July'), ('8', 'August'), ('9', 'September'), ('10', 'October'), ('11', 'November'), ('12', 'December')])
+    month = MultiCheckboxField('Plan to do on:', 
+            choices=[('january', 'January'), ('february', 'February'), ('march', 'March'), ('april', 'April'), ('may', 'May'), ('june', 'June'), ('july', 'July'), ('august', 'August'), ('september', 'September'), ('octorber', 'October'), ('novermber', 'November'), ('december', 'December')])
+    year = StringField("Year", validators=[DataRequired()])
     status=SelectField(
         'Status', choices=[
             ('done', 'Done'),
             ('plan', 'Plan'),
             ('doing', 'Doing')
         ],validators=[DataRequired()])
-    body = CKEditorField("Blog Content", validators=[DataRequired()])
-    submit = SubmitField("Submit Plan")
+    body = CKEditorField("Content", validators=[DataRequired()])
+    submit = SubmitField("Submit")

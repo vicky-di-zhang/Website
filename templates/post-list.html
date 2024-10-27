@@ -1,17 +1,28 @@
 {% include "header.html" %}
 
 <!-- Page Header-->
-{% if sub_category == 'spring' %}
-<header
-  class="masthead"
-  style="background-image: url('../static/assets/img/about-bg.jpg')"
->
-{% else %}
-<header
-  class="masthead"
-  style="background-image: url('../static/assets/img/home-bg1.png')"
->
+{% if sub_category == 'Spring' %}
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/img/spring.png') }}')">
+{% elif sub_category == 'Summer' %}
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/img/summer.jpg') }}')">
+{% elif sub_category == 'Autumn' %}
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/img/autumn.jpg') }}')">
+{% elif sub_category == 'Winter' %}
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/img/winter.jpg') }}')">
+{% elif  sub_category == 'Crochet' %}
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/img/watershadow.jpeg') }}')">
+{% elif  sub_category == 'Sewing' %}
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/img/spring2.png') }}')">
+{% elif  sub_category == 'Sashiko' %}
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/img/sashiko.jpg') }}')">
+{% elif  sub_category == 'Books' %}
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/img/book.png') }}')">
+{% elif  sub_category == 'Courses' %}
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/img/wave1.jpg') }}')">
+{% elif  sub_category == 'Professional' %}
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/img/wave.jpeg') }}')">
 {% endif %}
+
   <div class="container position-relative px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
