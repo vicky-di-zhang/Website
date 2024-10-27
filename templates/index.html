@@ -28,7 +28,7 @@
     <div class="site-heading">
       {% if current_user.id == 1 %}
       <h2>✨ Sparkle   <a
-          class="btn btn-primary float-right"
+          class="btn btn-primary float-right" style="background-color:rgb(71, 122, 153); border:none"
           href="{{url_for('add_new_post')}}"
           >+</a
         ></h2>
@@ -36,7 +36,7 @@
       <h2>✨ Sparkle</h2>
         {% endif %}
       <br>
-      <span class="subheading">四季更迭......balabala</span>
+      <h4 style="color:white">What Ignites My Life</h4>
     </div>
   </div>
 </div>
@@ -60,19 +60,19 @@
 
     <div class="content">
       <div class="season">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center mb-2">
             <h3>Spring</h3> 
             <a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="{{ url_for('get_select_posts', category='sparkle', sub_category='spring', logo='🌷')}}">All Posts...</a>
         </div>
     
         {% for post in spring %}
           <div class="d-flex justify-content-between align-items-center mb-1">
-                <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none">
+                <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(186, 215, 233); font-size:1rem;  ">
                     <h4 class="mb-0">{{ post.title }}</h4>
                 </a>
 
                 <div class="d-flex align-items-center">
-                    <h5 class="mb-0 me-3"> {{ post.date }}</h5>
+                    <h5 class="mb-0 me-3" style="color:rgb(186, 215, 233); font-size:0.9rem;  "> {{ post.date }}</h5>
                     {% if logged_in %}
                     <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
                     {% endif %}
@@ -83,7 +83,7 @@
       <hr>
 
       <div class="season">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center mb-2">
             <h3>Summer</h3> 
             <a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="{{ url_for('get_select_posts', category='sparkle', sub_category='summer', logo='⛱️')}}">All Posts...</a>
         </div>
@@ -91,12 +91,12 @@
   
         {% for post in summer %}
           <div class="d-flex justify-content-between align-items-center mb-1">
-                  <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none">
+                  <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(186, 215, 233); font-size:1rem;  ">
                       <h4 class="mb-0">{{ post.title }}</h4>
                   </a>
 
                   <div class="d-flex align-items-center">
-                      <h5 class="mb-0 me-3"> {{ post.date }}</h5>
+                      <h5 class="mb-0 me-3" style="color:rgb(186, 215, 233); font-size:0.9rem;"> {{ post.date }}</h5>
                       {% if logged_in %}
                       <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
                       {% endif %}
@@ -107,19 +107,19 @@
       <hr>
 
       <div class="season">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center mb-2">
             <h3>Autumn</h3> 
             <a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="{{ url_for('get_select_posts', category='sparkle', sub_category='autumn', logo='🍂')}}">All Posts...</a>
         </div>
     
         {% for post in autumn %}
           <div class="d-flex justify-content-between align-items-center mb-1">
-              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(186, 215, 233); font-size:1rem;">
                   <h4 class="mb-0">{{ post.title }}</h4>
               </a>
 
               <div class="d-flex align-items-center">
-                  <h5 class="mb-0 me-3"> {{ post.date }}</h5>
+                  <h5 class="mb-0 me-3" style="color:rgb(186, 215, 233); font-size:0.9rem;  "> {{ post.date }}</h5>
                   {% if logged_in %}
                   <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
                   {% endif %}
@@ -131,19 +131,19 @@
       <hr>
       
       <div class="season">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center mb-2">
             <h3>Winter</h3> 
             <a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="{{ url_for('get_select_posts', category='sparkle', sub_category='winter', logo='❄️')}}">All Posts...</a>
         </div>
   
         {% for post in winter %}
           <div class="d-flex justify-content-between align-items-center mb-1">
-              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(186, 215, 233); font-size:1rem;  ">
                   <h4 class="mb-0">{{ post.title }}</h4>
               </a>
 
               <div class="d-flex align-items-center">
-                  <h5 class="mb-0 me-3"> {{ post.date }}</h5>
+                  <h5 class="mb-0 me-3" style="color:rgb(186, 215, 233); font-size:0.9rem;  "> {{ post.date }}</h5>
                   {% if logged_in %}
                   <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
                   {% endif %}
@@ -160,8 +160,8 @@
 <div class="container" style="padding:2rem; justify-items:center;">
   <div class="row">
     <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233); font-size:1.5rem;" href="{{ url_for('get_year_posts', category='sparkle', year='2024')}}">2024</a> </div>
-    <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233); font-size:1.5rem;" href="#!">2025</a> </div>
-    <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233); font-size:1.5rem;" href="#!">2026</a> </div> 
+    <!-- <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233); font-size:1.5rem;" href="{{ url_for('get_year_posts', category='sparkle', year='2025')}}">2025</a> </div> -->
+    <!-- <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233); font-size:1.5rem;" href="{{ url_for('get_year_posts', category='sparkle', year='2026')}}">2026</a> </div>  -->
   </div>  
   </div>
 </div>
@@ -170,14 +170,14 @@
 <!-- Hobby -->
  <div 
  class="masthead section2"
- style="background-color: #BAD7E9;"
+ style="background-color: #BAD7E9; color:rgb(20,45,80);"
  >
  <div class="row gx-4 gx-lg-5 justify-content-center">
   <div class="col-md-10 col-lg-8 col-xl-7 text-center  mb-5">
     <div class="site-heading">
       {% if current_user.id == 1 %}
       <h2>✨ Hobby   <a
-          class="btn btn-primary float-right"
+          class="btn btn-primary float-right" style="background-color:rgb(82, 107, 151);border:none"
           href="{{url_for('add_new_post')}}"
           >+</a
         ></h2>
@@ -186,7 +186,7 @@
         {% endif %}
 
       <br>
-      <span class="subheading">what i like to do......balabala</span>
+      <h4>What Makes Me Lose Track of Time</h4>
     </div>
   </div>
 </div>
@@ -206,32 +206,85 @@
     </div>
 
     <div class="content">
-        <div class="season">
-          <div class="d-flex justify-content-between align-items-center">
-            <h3>Crochet</h3>  
-            <a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="#!">All Posts...</a>
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>Crochet</h3>  
+          <a class="btn btn-secondary text-uppercase" style="color:rgb(186, 215, 233); background-color:rgb(20,45,80)" href="{{ url_for('get_select_posts', category='hobby', sub_category='crochet', logo='🧶')}}">All Posts...</a>
+        </div>
+        {% for post in crochet %}
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(82, 107, 151); font-size:1rem;  ">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+
+              <div class="d-flex align-items-center">
+                  <h5 class="mb-0 me-3" style="color:color:rgb(82, 107, 151); font-size:0.9rem;  "> {{ post.date }}</h5>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
           </div>
-            <p>Article about Spring...</p>
+        {% endfor %}
+      </div>
+      <hr>
+
+
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>Sewing</h3>  
+          <a class="btn btn-secondary text-uppercase" style="color:rgb(186, 215, 233); background-color:rgb(20,45,80)" href="{{ url_for('get_select_posts', category='hobby', sub_category='sewing', logo='✂️')}}">All Posts...</a>
         </div>
-        <hr>
-        <div class="season">
-            <h3>Sewing</h3>
-            <p>Article about Summer...</p>
+        {% for post in sewing %}
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(82, 107, 151); font-size:1rem;  ">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+
+              <div class="d-flex align-items-center">
+                  <h5 class="mb-0 me-3" style="color:rgb(82, 107, 151); font-size:0.9rem;"> {{ post.date }}</h5>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      
+      </div>
+      <hr>
+        
+        
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>Sashiko</h3>  
+          <a class="btn btn-secondary text-uppercase" style="color:rgb(186, 215, 233); background-color:rgb(20,45,80)" href="{{ url_for('get_select_posts', category='hobby', sub_category='sashiko', logo='🪡')}}">All Posts...</a>
         </div>
-        <hr>
-        <div class="season">
-            <h3>Sashiko</h3>
-            <p>Article about Winter...</p>
-        </div>
+        {% for post in sashiko %}
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(82, 107, 151); font-size:1rem;  ">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+
+              <div class="d-flex align-items-center">
+                  <h5 class="mb-0 me-3" style="color:rgb(82, 107, 151); font-size:0.9rem;  "> {{ post.date }}</h5>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
+
+
     </div>
-</div>
+  </div>
 </div>
 
 <div class="container" style="padding:2rem; justify-items:center;">
   <div class="row">
-    <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233); font-size:1.5rem;" href="#!">2024</a> </div>
-    <!-- <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="#!">2025</a> </div>
-    <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="#!">2026</a> </div> -->
+    <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(186, 215, 233); background-color:rgb(20,45,80); font-size:1.5rem;" href="{{ url_for('get_year_posts', category='hobby', year='2024')}}">2024</a> </div>
+    <!-- <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(186, 215, 233); background-color:rgb(20,45,80); font-size:1.5rem;" href="{{ url_for('get_year_posts', category='hobby', year='2025')}}">2025</a> </div> -->
+    <!-- <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(186, 215, 233); background-color:rgb(20,45,80); font-size:1.5rem;" href="{{ url_for('get_year_posts', category='hobby', year='2026')}}">2026</a> </div>  -->
   </div>  
   </div>
 </div>
@@ -239,14 +292,14 @@
 <!--  Self-Explore -->
 <div 
 class="masthead section3"
-style="background-color: rgb(252, 255, 231);"
+style="background-color: rgb(252, 255, 231); color:rgb(235, 69, 95); "
 >
 <div class="row gx-4 gx-lg-5 justify-content-center">
  <div class="col-md-10 col-lg-8 col-xl-7 text-center  mb-5">
-   <div class="site-heading">
+   <div class="site-heading" >
     {% if current_user.id == 1 %}
     <h2>✨ Self-Explore  <a
-        class="btn btn-primary float-right"
+        class="btn btn-primary float-right" style="background-color:rgb(248, 170, 182);border:none"
         href="{{url_for('add_new_post')}}"
         >+</a
       ></h2>
@@ -254,7 +307,7 @@ style="background-color: rgb(252, 255, 231);"
     <h2>✨ Self-Explore</h2>
       {% endif %}
      <br>
-     <span class="subheading">what i like to do......balabala</span>
+     <h4>A World of Possibilities, Full of Wonder</h4>
    </div>
  </div>
 </div>
@@ -262,61 +315,108 @@ style="background-color: rgb(252, 255, 231);"
 <div class="section_container  px-4 px-lg-5">
  <div class="section_container ">
    <div class="timeline">
-       <div class="timeline-item">
-           <div class="icon icon3">📚</div> <!-- Books -->
+       <div class="timeline-item" >
+           <div class="icon icon3" style="background-color: rgb(252, 255, 231)">📚</div> <!-- Books -->
        </div>
        <div class="timeline-item">
-           <div class="icon icon3">🪄</div> <!-- Courses -->
+           <div class="icon icon3" style="background-color: rgb(252, 255, 231)">🪄</div> <!-- Courses -->
        </div>
        <div class="timeline-item">
-           <div class="icon icon3">💻</div> <!-- Professional related -->
+           <div class="icon icon3" style="background-color: rgb(252, 255, 231)">💻</div> <!-- Professional related -->
        </div>
    </div>
 
    <div class="content">
-       <div class="season">
-        <div class="d-flex justify-content-between align-items-center">
-          <h3>Books</h3>  
-          <a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="#!">All Posts...</a>
-        </div>
-           <p>Article about Spring...</p>
+    <div class="season">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h3>Books</h3>  
+        <a class="btn btn-secondary text-uppercase btn3" href="{{ url_for('get_select_posts', category='hobby', sub_category='books', logo='📚')}}">All Posts...</a>
+      </div>
+      {% for post in books %}
+        <div class="d-flex justify-content-between align-items-center mb-1">
+            <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(186, 215, 233); font-size:1rem;  ">
+                <h4 class="mb-0">{{ post.title }}</h4>
+            </a>
 
-       </div>
-       <hr>
-       <div class="season">
-           <h3>Courses</h3>
-           <p>Article about Summer...</p>
-       </div>
-       <hr>
-       <div class="season">
-           <h3>Professional related</h3>
-           <p>Article about Autumn...</p>
-       </div>
-       <hr>
+            <div class="d-flex align-items-center">
+                <h5 class="mb-0 me-3" style="color:rgb(186, 215, 233); font-size:0.9rem;  "> {{ post.date }}</h5>
+                {% if logged_in %}
+                <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                {% endif %}
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+    <hr>
+
+
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>Courses</h3>  
+          <a class="btn btn-secondary text-uppercase btn3" href="{{ url_for('get_select_posts', category='hobby', sub_category='courses', logo='🪄')}}">All Posts...</a>
+        </div>
+        {% for post in courses %}
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(186, 215, 233); font-size:1rem;  ">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+
+              <div class="d-flex align-items-center">
+                  <h5 class="mb-0 me-3" style="color:rgb(186, 215, 233); font-size:0.9rem;  "> {{ post.date }}</h5>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
+       
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>Prefessional related</h3>  
+          <a class="btn btn-secondary text-uppercase btn3" href="{{ url_for('get_select_posts', category='hobby', sub_category='professional', logo='💻')}}">All Posts...</a>
+        </div>  
+        {% for post in professional %}
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(186, 215, 233); font-size:1rem;  ">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+
+              <div class="d-flex align-items-center">
+                  <h5 class="mb-0 me-3" style="color:rgb(186, 215, 233); font-size:0.9rem;  "> {{ post.date }}</h5>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
    </div>
 </div>
 </div>
 
 <div class="container" style="padding:2rem; justify-items:center;">
- <div class="row">
-   <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233); font-size:1.5rem;" href="#!">2024</a> </div>
-   <!-- <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="#!">2025</a> </div>
-   <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="#!">2026</a> </div> -->
- </div>  
- </div>
+  <div class="row">
+    <div class="col-4"><a class="btn btn-secondary text-uppercase btn3"  style="font-size:1.5rem;" href="{{ url_for('get_year_posts', category='self-explore', year='2024')}}">2024</a> </div>
+    <!-- <div class="col-4"><a class="btn btn-secondary text-uppercase btn3"  style="font-size:1.5rem;" href="{{ url_for('get_year_posts', category='self-explore', year='2025')}}">2025</a> </div> -->
+    <!-- <div class="col-4"><a class="btn btn-secondary text-uppercase btn3"  style="font-size:1.5rem;" href="{{ url_for('get_year_posts', category='self-explore', year='2026')}}">2026</a> </div>  -->
+  </div>  
+  </div>
 </div>
 
 <!-- Plan -->
 <div 
 class="masthead section4"
-style="background-color: rgb(235, 69, 95);"
+style="background-color: rgb(219, 70, 92);color: rgb(255, 245, 205);"
 >
 <div class="row gx-4 gx-lg-5 justify-content-center">
  <div class="col-md-10 col-lg-8 col-xl-7 text-center  mb-5">
    <div class="site-heading">
     {% if current_user.id == 1 %}
-    <h2>✨ Plan  <a
-        class="btn btn-primary float-right"
+    <h2>✨  Plan  <a
+        class="btn btn-primary float-right" style="background-color:rgb(245, 175, 165);border:none;"
         href="{{url_for('add_new_plan')}}"
         >+</a
       ></h2>
@@ -324,45 +424,326 @@ style="background-color: rgb(235, 69, 95);"
     <h2>✨ Plan</h2>
       {% endif %}
      <br>
-     <span class="subheading">what i like to do......balabala</span>
+     <h4> 凡事， 预 则 立</h4>
    </div>
  </div>
 </div>
 
 <div class="section_container  px-4 px-lg-5">
  <div class="section_container ">
-   <div class="timeline">
-       <div class="timeline-item">
-           <h4>January</h4> <!-- Books -->
-       </div>
-       <div class="timeline-item">
-        <h4>February</h4> <!-- Books -->
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="icon icon3" style="background-color: rgb(219, 70, 92)">🕐</div> <!-- Books -->
+      </div>
+      <div class="timeline-item">
+        <div class="icon icon3" style="background-color: rgb(219, 70, 92)">🕑</div> <!-- Books -->
+      </div>
+      <div class="timeline-item">
+        <div class="icon icon3" style="background-color: rgb(219, 70, 92)">🕒</div> <!-- Books -->
+      </div>
+      <div class="timeline-item">
+        <div class="icon icon3" style="background-color: rgb(219, 70, 92)">🕓</div> <!-- Books -->
+      </div>
+      <div class="timeline-item">
+        <div class="icon icon3" style="background-color: rgb(219, 70, 92)">🕔</div> <!-- Books -->
+      </div>
+      <div class="timeline-item">
+        <div class="icon icon3" style="background-color: rgb(219, 70, 92)">🕕</div> <!-- Books -->
+      </div>
+      <div class="timeline-item">
+        <div class="icon icon3" style="background-color: rgb(219, 70, 92)">🕖</div> <!-- Books -->
+      </div>
+      <div class="timeline-item">
+        <div class="icon icon3" style="background-color: rgb(219, 70, 92)">🕗</div> <!-- Books -->
+      </div>
+      <div class="timeline-item">
+        <div class="icon icon3" style="background-color: rgb(219, 70, 92)">🕘</div> <!-- Books -->
+      </div>
+      <div class="timeline-item">
+        <div class="icon icon3" style="background-color: rgb(219, 70, 92)">🕙</div> <!-- Books -->
+      </div>
+      <div class="timeline-item">
+        <div class="icon icon3" style="background-color: rgb(219, 70, 92)">🕚</div> <!-- Books -->
+      </div>
+
+      <div class="timeline-item">
+        <div class="icon icon3" style="background-color: rgb(219, 70, 92)">🕛</div> <!-- Books -->
+      </div>
     </div>
-   </div>
 
-   <div class="content">
-       <div class="season">
-        <div class="d-flex justify-content-between align-items-center">
-          <h3>Books</h3>  
-          <a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="#!">All Posts...</a>
+
+
+
+    <div class="content">
+      <!-- January -->
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>January</h3>   
+          <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='january', logo='🕐')}}">All Posts...</a> 
         </div>
-           <p>Article about Spring...</p>
+        {% for post in january %} 
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+              <div class="d-flex align-items-center">
+                  <h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
 
-       </div>
-       <hr>
-       <div class="season">
-           <h3>Courses</h3>
-           <p>Article about Summer...</p>
-       </div>
+      <!-- February -->
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>February</h3>   
+          <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='february', logo='🕑')}}">All Posts...</a>
+        </div>
+        {% for post in february %} 
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+              <div class="d-flex align-items-center">
+<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
 
-       <hr>
+      <!-- March -->
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>March</h3>   
+          <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='march', logo='🕒')}}">All Posts...</a>
+        </div>
+        {% for post in march %} 
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+              <div class="d-flex align-items-center">
+<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
+
+      <!-- April -->
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>April</h3>   
+          <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='april', logo='🕓')}}">All Posts...</a>
+        </div>
+        {% for post in april %} 
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+              <div class="d-flex align-items-center">
+<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
+
+      <!-- May -->
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>May</h3>   
+          <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='may', logo='🕔')}}">All Posts...</a>
+        </div>
+        {% for post in may %} 
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+              <div class="d-flex align-items-center">
+<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
+
+      <!-- June -->
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>June</h3>   
+          <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='june', logo='🕕')}}">All Posts...</a>
+        </div>
+        {% for post in june %} 
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+              <div class="d-flex align-items-center">
+<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
+            <!-- July -->
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>July</h3>   
+          <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='july', logo='🕖')}}">All Posts...</a>
+        </div>
+        {% for post in july %} 
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+              <div class="d-flex align-items-center">
+<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
+
+      <!-- August -->
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>August</h3>   
+          <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='august', logo='🕗')}}">All Posts...</a>
+        </div>
+        {% for post in august %} 
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+              <div class="d-flex align-items-center">
+<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
+
+      <!-- September -->
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>September</h3>   
+          <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='september', logo='🕘')}}">All Posts...</a>
+        </div>
+        {% for post in september %} 
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+              <div class="d-flex align-items-center">
+<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
+
+      <!-- October -->
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>October</h3>   
+          <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='october', logo='🕙')}}">All Posts...</a>
+        </div>
+        {% for post in october %} 
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+              <div class="d-flex align-items-center">
+<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
+
+      <!-- November -->
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>November</h3>   
+          <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='november', logo='🕚')}}">All Posts...</a>
+        </div>
+        {% for post in november %} 
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+              <div class="d-flex align-items-center">
+<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
+
+      <!-- December -->
+      <div class="season">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h3>December</h3>   
+          <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='december', logo='🕛')}}">All Posts...</a>
+        </div>
+        {% for post in december %} 
+          <div class="d-flex justify-content-between align-items-center mb-1">
+              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ post.title }}</h4>
+              </a>
+              <div class="d-flex align-items-center">
+<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+                  {% if logged_in %}
+                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+
    </div>
 </div>
 </div>
 
 <div class="container" style="padding:2rem; justify-items:center;">
  <div class="row">
-   <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233); font-size:1.5rem;" href="#!">2024</a> </div>
+   <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;font-size:1.5rem;" href="#!">2024</a> </div>
    <!-- <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="#!">2025</a> </div>
    <div class="col-4"><a class="btn btn-secondary text-uppercase" style="color:rgb(20,45,80); background-color:rgb(186, 215, 233)" href="#!">2026</a> </div> -->
  </div>  
