@@ -481,15 +481,15 @@ style="background-color: rgb(219, 70, 92);color: rgb(255, 245, 205);"
           <h3>January</h3>   
           <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='january', logo='🕐')}}">All Posts...</a> 
         </div>
-        {% for post in january %} 
+        {% for plan in january %} 
           <div class="d-flex justify-content-between align-items-center mb-1">
-              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
-                  <h4 class="mb-0">{{ post.title }}</h4>
+              <a href="{{ url_for('show_plan', plan_id=plan.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ plan.title }}</h4>
               </a>
               <div class="d-flex align-items-center">
-                  <h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+                  <h4 class="mb-0 me-3" style="font-style:italic">{{plan.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ plan.status }}&nbsp;&nbsp;</h4>
                   {% if logged_in %}
-                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  <a href="{{ url_for('delete_plan', plan_id=plan.id) }}" class="text-danger">✘</a>
                   {% endif %}
               </div>
           </div>
@@ -503,15 +503,15 @@ style="background-color: rgb(219, 70, 92);color: rgb(255, 245, 205);"
           <h3>February</h3>   
           <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='february', logo='🕑')}}">All Posts...</a>
         </div>
-        {% for post in february %} 
+        {% for plan in february %} 
           <div class="d-flex justify-content-between align-items-center mb-1">
-              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
-                  <h4 class="mb-0">{{ post.title }}</h4>
+              <a href="{{ url_for('show_plan', plan_id=plan.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ plan.title }}</h4>
               </a>
               <div class="d-flex align-items-center">
-<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+<h4 class="mb-0 me-3" style="font-style:italic">{{plan.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ plan.status }}&nbsp;&nbsp;</h4>
                   {% if logged_in %}
-                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  <a href="{{ url_for('delete_plan', plan_id=plan.id) }}" class="text-danger">✘</a>
                   {% endif %}
               </div>
           </div>
@@ -525,15 +525,15 @@ style="background-color: rgb(219, 70, 92);color: rgb(255, 245, 205);"
           <h3>March</h3>   
           <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='march', logo='🕒')}}">All Posts...</a>
         </div>
-        {% for post in march %} 
+        {% for plan in march %} 
           <div class="d-flex justify-content-between align-items-center mb-1">
-              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
-                  <h4 class="mb-0">{{ post.title }}</h4>
+              <a href="{{ url_for('show_plan', plan_id=plan.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ plan.title }}</h4>
               </a>
               <div class="d-flex align-items-center">
-<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+<h4 class="mb-0 me-3" style="font-style:italic">{{plan.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ plan.status }}&nbsp;&nbsp;</h4>
                   {% if logged_in %}
-                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  <a href="{{ url_for('delete_plan', plan_id=plan.id) }}" class="text-danger">✘</a>
                   {% endif %}
               </div>
           </div>
@@ -547,15 +547,15 @@ style="background-color: rgb(219, 70, 92);color: rgb(255, 245, 205);"
           <h3>April</h3>   
           <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='april', logo='🕓')}}">All Posts...</a>
         </div>
-        {% for post in april %} 
+        {% for plan in april %} 
           <div class="d-flex justify-content-between align-items-center mb-1">
-              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
-                  <h4 class="mb-0">{{ post.title }}</h4>
+              <a href="{{ url_for('show_plan', plan_id=plan.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ plan.title }}</h4>
               </a>
               <div class="d-flex align-items-center">
-<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+<h4 class="mb-0 me-3" style="font-style:italic">{{plan.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ plan.status }}&nbsp;&nbsp;</h4>
                   {% if logged_in %}
-                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  <a href="{{ url_for('delete_plan', plan_id=plan.id) }}" class="text-danger">✘</a>
                   {% endif %}
               </div>
           </div>
@@ -569,15 +569,15 @@ style="background-color: rgb(219, 70, 92);color: rgb(255, 245, 205);"
           <h3>May</h3>   
           <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='may', logo='🕔')}}">All Posts...</a>
         </div>
-        {% for post in may %} 
+        {% for plan in may %} 
           <div class="d-flex justify-content-between align-items-center mb-1">
-              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
-                  <h4 class="mb-0">{{ post.title }}</h4>
+              <a href="{{ url_for('show_plan', plan_id=plan.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ plan.title }}</h4>
               </a>
               <div class="d-flex align-items-center">
-<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+<h4 class="mb-0 me-3" style="font-style:italic">{{plan.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ plan.status }}&nbsp;&nbsp;</h4>
                   {% if logged_in %}
-                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  <a href="{{ url_for('delete_plan', plan_id=plan.id) }}" class="text-danger">✘</a>
                   {% endif %}
               </div>
           </div>
@@ -591,15 +591,15 @@ style="background-color: rgb(219, 70, 92);color: rgb(255, 245, 205);"
           <h3>June</h3>   
           <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='june', logo='🕕')}}">All Posts...</a>
         </div>
-        {% for post in june %} 
+        {% for plan in june %} 
           <div class="d-flex justify-content-between align-items-center mb-1">
-              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
-                  <h4 class="mb-0">{{ post.title }}</h4>
+              <a href="{{ url_for('show_plan', plan_id=plan.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ plan.title }}</h4>
               </a>
               <div class="d-flex align-items-center">
-<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+<h4 class="mb-0 me-3" style="font-style:italic">{{plan.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ plan.status }}&nbsp;&nbsp;</h4>
                   {% if logged_in %}
-                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  <a href="{{ url_for('delete_plan', plan_id=plan.id) }}" class="text-danger">✘</a>
                   {% endif %}
               </div>
           </div>
@@ -612,15 +612,15 @@ style="background-color: rgb(219, 70, 92);color: rgb(255, 245, 205);"
           <h3>July</h3>   
           <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='july', logo='🕖')}}">All Posts...</a>
         </div>
-        {% for post in july %} 
+        {% for plan in july %} 
           <div class="d-flex justify-content-between align-items-center mb-1">
-              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
-                  <h4 class="mb-0">{{ post.title }}</h4>
+              <a href="{{ url_for('show_plan', plan_id=plan.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ plan.title }}</h4>
               </a>
               <div class="d-flex align-items-center">
-<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+<h4 class="mb-0 me-3" style="font-style:italic">{{plan.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ plan.status }}&nbsp;&nbsp;</h4>
                   {% if logged_in %}
-                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  <a href="{{ url_for('delete_plan', plan_id=plan.id) }}" class="text-danger">✘</a>
                   {% endif %}
               </div>
           </div>
@@ -634,15 +634,15 @@ style="background-color: rgb(219, 70, 92);color: rgb(255, 245, 205);"
           <h3>August</h3>   
           <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='august', logo='🕗')}}">All Posts...</a>
         </div>
-        {% for post in august %} 
+        {% for plan in august %} 
           <div class="d-flex justify-content-between align-items-center mb-1">
-              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
-                  <h4 class="mb-0">{{ post.title }}</h4>
+              <a href="{{ url_for('show_plan', plan_id=plan.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ plan.title }}</h4>
               </a>
               <div class="d-flex align-items-center">
-<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+<h4 class="mb-0 me-3" style="font-style:italic">{{plan.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ plan.status }}&nbsp;&nbsp;</h4>
                   {% if logged_in %}
-                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  <a href="{{ url_for('delete_plan', plan_id=plan.id) }}" class="text-danger">✘</a>
                   {% endif %}
               </div>
           </div>
@@ -656,15 +656,15 @@ style="background-color: rgb(219, 70, 92);color: rgb(255, 245, 205);"
           <h3>September</h3>   
           <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='september', logo='🕘')}}">All Posts...</a>
         </div>
-        {% for post in september %} 
+        {% for plan in september %} 
           <div class="d-flex justify-content-between align-items-center mb-1">
-              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
-                  <h4 class="mb-0">{{ post.title }}</h4>
+              <a href="{{ url_for('show_plan', plan_id=plan.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ plan.title }}</h4>
               </a>
               <div class="d-flex align-items-center">
-<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+<h4 class="mb-0 me-3" style="font-style:italic">{{plan.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ plan.status }}&nbsp;&nbsp;</h4>
                   {% if logged_in %}
-                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  <a href="{{ url_for('delete_plan', plan_id=plan.id) }}" class="text-danger">✘</a>
                   {% endif %}
               </div>
           </div>
@@ -678,15 +678,15 @@ style="background-color: rgb(219, 70, 92);color: rgb(255, 245, 205);"
           <h3>October</h3>   
           <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='october', logo='🕙')}}">All Posts...</a>
         </div>
-        {% for post in october %} 
+        {% for plan in october %} 
           <div class="d-flex justify-content-between align-items-center mb-1">
-              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
-                  <h4 class="mb-0">{{ post.title }}</h4>
+              <a href="{{ url_for('show_plan', plan_id=plan.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ plan.title }}</h4>
               </a>
               <div class="d-flex align-items-center">
-<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+<h4 class="mb-0 me-3" style="font-style:italic">{{plan.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ plan.status }}&nbsp;&nbsp;</h4>
                   {% if logged_in %}
-                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  <a href="{{ url_for('delete_plan', plan_id=plan.id) }}" class="text-danger">✘</a>
                   {% endif %}
               </div>
           </div>
@@ -700,15 +700,15 @@ style="background-color: rgb(219, 70, 92);color: rgb(255, 245, 205);"
           <h3>November</h3>   
           <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='november', logo='🕚')}}">All Posts...</a>
         </div>
-        {% for post in november %} 
+        {% for plan in november %} 
           <div class="d-flex justify-content-between align-items-center mb-1">
-              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
-                  <h4 class="mb-0">{{ post.title }}</h4>
+              <a href="{{ url_for('show_plan', plan_id=plan.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ plan.title }}</h4>
               </a>
               <div class="d-flex align-items-center">
-<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+<h4 class="mb-0 me-3" style="font-style:italic">{{plan.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ plan.status }}&nbsp;&nbsp;</h4>
                   {% if logged_in %}
-                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  <a href="{{ url_for('delete_plan', plan_id=plan.id) }}" class="text-danger">✘</a>
                   {% endif %}
               </div>
           </div>
@@ -722,15 +722,15 @@ style="background-color: rgb(219, 70, 92);color: rgb(255, 245, 205);"
           <h3>December</h3>   
           <a class="btn btn-secondary text-uppercase" style="color:rgb(219, 70, 92);background-color: rgb(255, 245, 205);border:none;" href="{{ url_for('get_select_plans', month='december', logo='🕛')}}">All Posts...</a>
         </div>
-        {% for post in december %} 
+        {% for plan in december %} 
           <div class="d-flex justify-content-between align-items-center mb-1">
-              <a href="{{ url_for('show_post', post_id=post.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
-                  <h4 class="mb-0">{{ post.title }}</h4>
+              <a href="{{ url_for('show_plan', plan_id=plan.id) }}" class="text-decoration-none" style="color:rgb(255, 138, 138); font-size:1rem;">
+                  <h4 class="mb-0">{{ plan.title }}</h4>
               </a>
               <div class="d-flex align-items-center">
-<h4 class="mb-0 me-3" style="font-style:italic">{{post.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ post.status }}&nbsp;&nbsp;</h4>
+<h4 class="mb-0 me-3" style="font-style:italic">{{plan.category.capitalize()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ plan.status }}&nbsp;&nbsp;</h4>
                   {% if logged_in %}
-                  <a href="{{ url_for('delete_post', post_id=post.id) }}" class="text-danger">✘</a>
+                  <a href="{{ url_for('delete_plan', plan_id=plan.id) }}" class="text-danger">✘</a>
                   {% endif %}
               </div>
           </div>

@@ -14,13 +14,16 @@ from forms import CreatePostForm,LoginForm,RegisterForm,CommentForm,LoginbuttonF
 from functools import wraps
 from flask import abort
 import os
+from dotenv import load_dotenv
 from flask import Flask, render_template, flash, redirect, url_for, request
 from werkzeug.utils import secure_filename
 
+load_dotenv()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
-
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+if not app.config['SECRET_KEY']:
+    raise ValueError("No SECRET_KEY set for Flask application")
 
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif','heic','mov'}
@@ -476,6 +479,13 @@ def delete_post(post_id):
     db.session.commit()
     return redirect(url_for('get_all_posts'))
 
+@app.route("/delete/<int:plan_id>")
+@user_id_1_only
+def delete_plan(plan_id):
+    post_to_delete = db.get_or_404(PlanPost, plan_id)
+    db.session.delete(post_to_delete)
+    db.session.commit()
+    return redirect(url_for('get_all_posts'))
 
 @app.route("/about")
 def about():
