@@ -8,6 +8,8 @@
     />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Vicky's World</title>
     {% block styles %}
     <!-- Load Bootstrap-Flask CSS here -->
@@ -39,11 +41,29 @@
       rel="stylesheet"
     />
     <style>
+      *,
+      *::before,
+      *::after {
+          box-sizing: border-box;
+        }
+
+      .container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      body, html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+    
       .section1,
       .section2,
       .section3,
       .section4 {
-        padding-left: 100px;
+        padding-left: 10%;
         padding-right: 100px;
         padding-top: 100px;
         padding-bottom: 80px;
@@ -97,7 +117,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 50px; /* 图标大小 */
+      font-size: 50px; 
       z-index: 1;
     }
     .icon1{
@@ -149,6 +169,59 @@
       background-color: rgb(255, 245, 205);
       border:none;
     }
+
+    .btn-allposts {
+      padding: 5px 12px;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+          width: 100vw;
+          overflow-x: hidden;
+      }
+    }
+
+
+    @media (max-width: 426px) {
+      .container {           
+        width: 100vw;       
+        overflow-x: hidden;     
+      } 
+
+      .timeline {         
+        display: none;       
+      }   
+
+      .section_container {         
+        width: 100%; 
+        padding-left: 0px;
+        padding-right: 0px;
+      } 
+      .content {
+        width: 100%;
+        flex: 0 0 100%;
+        padding-left: 10px;
+        padding-right: 0px;
+      }
+
+      .section1,       
+      .section2,       
+      .section3,       
+      .section4 {         
+        padding-left: 10%;        
+        padding-right: 10%; 
+        padding-bottom: 0px;     
+      }     
+
+      .masthead {  
+        padding-top: 40px;      
+        padding-left:0px;         
+        padding-right: 0px;
+        padding-bottom: 0px;      
+      }     
+    } 
+  
 
     </style>
     {% endblock %}
@@ -203,13 +276,13 @@
               >
             </li>
             {% endif %}
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a
                 class="nav-link px-lg-3 py-3 py-lg-4"
                 href="{{ url_for('about') }}"
                 >About</a
               >
-            </li>
+            </li> -->
             <li class="nav-item">
               <a
                 class="nav-link px-lg-3 py-3 py-lg-4"

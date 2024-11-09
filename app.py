@@ -321,11 +321,15 @@ def add_new_post():
 
 
     if form.validate_on_submit():
-        file = form.img.data
-        filename = secure_filename(file.filename)
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(file_path)
-        img_url = f'uploads/{filename}'
+        if form.img.data:
+            file = form.img.data
+            filename = secure_filename(file.filename)
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
+            img_url = f'uploads/{filename}'
+        else:
+            img_url = f'assets/img/home-bg2.png'
+            
 
         new_post = BlogPost(
             title=form.title.data,
@@ -349,12 +353,15 @@ def add_new_plan():
     form = CreatePlanForm()
 
     if form.validate_on_submit():
-        file = form.img.data
-        filename = secure_filename(file.filename)
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(file_path)
-        img_url = f'uploads/{filename}'
-        month = ','.join(form.month.data)
+        if form.img.data:
+            file = form.img.data
+            filename = secure_filename(file.filename)
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
+            img_url = f'uploads/{filename}'
+            month = ','.join(form.month.data)
+        else:
+            img_url = f'assets/img/home-bg2.png'
 
         new_plan = PlanPost(
             title=form.title.data,
@@ -389,14 +396,14 @@ def edit_post(post_id):
         post.body = edit_form.body.data
         post.category = edit_form.main_option.data
         post.sub_category = edit_form.sub_option.data
-        post.img_url=edit_form.img_url.data
-
         if edit_form.img.data:
             file = edit_form.img.data
             filename = secure_filename(file.filename)
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(file_path)
             post.img_url = url_for('static', filename=f'uploads/{filename}')
+        else:
+            post.img_url = f'assets/img/home-bg2.png'
 
         db.session.commit()
         return redirect(url_for("show_post", post_id=post.id))
@@ -426,6 +433,8 @@ def edit_plan(plan_id):
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(file_path)
             plan.img_url = url_for('static', filename=f'uploads/{filename}')
+        else:
+            plan.img_url = f'assets/img/home-bg2.png'
 
         db.session.commit()
         return redirect(url_for("show_plan", plan_id=plan.id))
@@ -450,12 +459,15 @@ def plan_to_post(plan_id):
         form.sub_option.choices = [('books', 'Books'), ('courses', 'Courses'),('professional','Professional related')]
 
     if form.validate_on_submit():
-        file = form.img.data
-        filename = secure_filename(file.filename)
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(file_path)
-        img_url = f'uploads/{filename}'
-
+        if form.img.data:
+            file = form.img.data
+            filename = secure_filename(file.filename)
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
+            img_url = f'uploads/{filename}'
+        else:
+            plan.img_url = f'assets/img/home-bg2.png'
+            
         new_post = BlogPost(
             title=form.title.data,
             body=form.body.data,

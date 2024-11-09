@@ -14,7 +14,7 @@ class MultiCheckboxField(SelectMultipleField):
 # WTForm for creating a blog post
 class CreatePostForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
-    img = FileField("Upload Background Image", validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg', 'gif','heic','mov'], 'Images only!')])
+    img = FileField("Upload Background Image", validators=[FileAllowed(['jpg', 'png', 'jpeg', 'gif','heic','mov'], 'Images only!')])
     main_option = SelectField(
         'Category', 
         choices=[
@@ -60,7 +60,7 @@ class LoginbuttonForm(FlaskForm):
 
 class CreatePlanForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
-    img = FileField("Upload Background Image", validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg', 'gif','heic','mov'], 'Images only!')])
+    img = FileField("Upload Background Image", validators=[FileAllowed(['jpg', 'png', 'jpeg', 'gif','heic','mov'], 'Images only!')])
     main_option = SelectField(
         'Category', 
         choices=[
