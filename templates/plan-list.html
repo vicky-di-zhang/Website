@@ -40,7 +40,7 @@
             {{ plan.category.capitalize() }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ plan.status }}&nbsp;&nbsp;
         </h4>
         {% if logged_in %}
-        <a href="" class="text-danger">✘</a>
+        <a href="{{url_for('delete_plan', plan_id=plan.id) }}" >✘</a>
         {% endif %}
     </div>
     
