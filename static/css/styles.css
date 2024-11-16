@@ -10809,19 +10809,18 @@ header.masthead .post-heading .meta a {
   width:18%;
 }
 
+.commentList {
+  margin-top: 50px;
+}
 
 .comment {
   padding-top: 20px;
 }
-.commentList {
-  padding:0;
-  list-style:none;
-  max-height:200px;
-  overflow:auto;
-}
+
 .commentList li {
-  margin:0;
-  margin-top:10px;
+  margin-bottom: 10px; /* 评论之间的间距 */
+  padding: 5px;
+  border-bottom: 1px solid #ddd; /* 可选: 评论之间的分隔线 */
 }
 .commentList li > div {
   display:table-cell;

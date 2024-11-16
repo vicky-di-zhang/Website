@@ -17,7 +17,8 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, render_template, flash, redirect, url_for, request
 from werkzeug.utils import secure_filename
-
+import pytz
+from datetime import datetime
 load_dotenv()
 
 app = Flask(__name__)
@@ -115,7 +116,6 @@ class Comment(db.Model):
 with app.app_context():
     db.create_all()
 
-
 def select_posts(posts, category, sub_category):
     filtered_posts = []
     if posts != None:
@@ -124,7 +124,7 @@ def select_posts(posts, category, sub_category):
                 filtered_posts.append(post)
     return filtered_posts
 
-def select_plans(plans, month):
+def select_plans(plans, month):                                      
     filtered_plans = []
     if plans != None:
         for plan in plans:
@@ -276,13 +276,14 @@ def show_post(post_id):
             return redirect(url_for("login"))
 
         new_comment = Comment(
-            text=comment_form.comment_text.data,
+            text=comment_form.body.data,
             comment_author=current_user,
-            parent_post=requested_post,
-            date=date.today().strftime("%B %d, %Y")
+            parent_blog_post=requested_post,
+            date=datetime.now(pytz.timezone("Europe/Berlin")).strftime("%B %d, %Y %H:%M:%S")
         )
         db.session.add(new_comment)
         db.session.commit()
+        return redirect(url_for("show_post", post_id=post_id))
     return render_template("post.html", post=requested_post, logged_in=current_user.is_authenticated, form = comment_form)
 
 
@@ -296,13 +297,15 @@ def show_plan(plan_id):
             return redirect(url_for("login"))
 
         new_comment = Comment(
-            text=comment_form.comment_text.data,
+            text=comment_form.body.data,
             comment_author=current_user,
-            parent_plan=requested_plan,
-            date=date.today().strftime("%B %d, %Y")
+            parent_plan_post=requested_plan,
+            date=datetime.now(pytz.timezone("Europe/Berlin")).strftime("%B %d, %Y %H:%M:%S")
         )
         db.session.add(new_comment)
         db.session.commit()
+        return redirect(url_for("show_plan", plan_id=plan_id))
+    
     return render_template("plan.html", plan=requested_plan, logged_in=current_user.is_authenticated, form = comment_form)
 
 
@@ -310,15 +313,6 @@ def show_plan(plan_id):
 @user_id_1_only
 def add_new_post():
     form = CreatePostForm()
-    if form.main_option.data == 'sparkle':
-        form.sub_option.choices = [('spring', 'Spring'), ('summer', 'Summer'), ('autumn', 'Autumn'),('winter', 'Winter')]
-    elif form.main_option.data == 'hobby':
-        form.sub_option.choices = [('crochet', 'Crochet'), ('sewing', 'Sewing'),('sashiko','Sashiko')]
-    elif form.main_option.data == 'self-explore':
-        form.sub_option.choices = [('books', 'Books'), ('courses', 'Courses'),('professional','Professional related')]
-    elif form.main_option.data == 'plan':
-        form.sub_option.choices = [('carrot', 'Carrot'), ('potato', 'Potato')]
-
 
     if form.validate_on_submit():
         if form.img.data:
@@ -362,7 +356,6 @@ def add_new_plan():
             month = ','.join(form.month.data)
         else:
             img_url = f'assets/img/home-bg2.png'
-
         new_plan = PlanPost(
             title=form.title.data,
             body=form.body.data,
@@ -379,65 +372,83 @@ def add_new_plan():
         return redirect(url_for("get_all_posts"))
     return render_template("make-plan.html", form=form, logged_in=current_user.is_authenticated)
 
-
-
 @app.route("/edit-post/<int:post_id>", methods=["GET", "POST"])
 @user_id_1_only
 def edit_post(post_id):
     post = db.get_or_404(BlogPost, post_id)
+    # Populate the form with existing data
     edit_form = CreatePostForm(
         title=post.title,
-        subtitle=post.subtitle,
-        body=post.body
+        body=post.body,
+        main_option=post.category,
     )
-    
     if edit_form.validate_on_submit():
         post.title = edit_form.title.data
         post.body = edit_form.body.data
-        post.category = edit_form.main_option.data
-        post.sub_category = edit_form.sub_option.data
-        if edit_form.img.data:
+        post.date=date.today().strftime("%B %d, %Y")
+        post.category=edit_form.main_option.data
+        post.sub_category=edit_form.sub_option.data
+        
+        if edit_form.img.data:  # Check if a new image file is uploaded
             file = edit_form.img.data
             filename = secure_filename(file.filename)
+            
+            # Ensure the filename is unique
+            if os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'], filename)):
+                filename, ext = os.path.splitext(filename)
+                filename = f"{filename}_{str(uuid.uuid4())[:8]}{ext}"
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(file_path)
+            # Update the image URL to point to the new file
             post.img_url = url_for('static', filename=f'uploads/{filename}')
-        else:
-            post.img_url = f'assets/img/home-bg2.png'
 
+        # Commit changes to the database
         db.session.commit()
         return redirect(url_for("show_post", post_id=post.id))
     return render_template("make-post.html", form=edit_form, is_edit=True, logged_in=current_user.is_authenticated)
+
 
 
 @app.route("/edit-plan/<int:plan_id>", methods=["GET", "POST"])
 @user_id_1_only
 def edit_plan(plan_id):
     plan = db.get_or_404(PlanPost, plan_id)
+    # Populate the form with existing data
     edit_form = CreatePlanForm(
         title=plan.title,
         body=plan.body,
         year=plan.year,
-        month=plan.month,
+        main_option=plan.category,
         status=plan.status
     )
-    
     if edit_form.validate_on_submit():
+        # Update text fields
         plan.title = edit_form.title.data
         plan.body = edit_form.body.data
-        plan.category = edit_form.main_option.data
-
-        if edit_form.img.data:
+        plan.year = edit_form.year.data
+        plan.month = ','.join(edit_form.month.data)
+        plan.status = edit_form.status.data
+        
+        if edit_form.img.data:  # Check if a new image file is uploaded
             file = edit_form.img.data
             filename = secure_filename(file.filename)
+            
+            # Ensure the filename is unique
+            if os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'], filename)):
+                filename, ext = os.path.splitext(filename)
+                filename = f"{filename}_{str(uuid.uuid4())[:8]}{ext}"
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(file_path)
+            # Update the image URL to point to the new file
             plan.img_url = url_for('static', filename=f'uploads/{filename}')
         else:
-            plan.img_url = f'assets/img/home-bg2.png'
+            # Keep the original image URL if no new image is uploaded
+            plan.img_url = plan.img_url
 
+        # Commit changes to the database
         db.session.commit()
         return redirect(url_for("show_plan", plan_id=plan.id))
+
     return render_template("make-plan.html", form=edit_form, is_edit=True, logged_in=current_user.is_authenticated)
 
 
@@ -447,16 +458,8 @@ def plan_to_post(plan_id):
     plan = db.get_or_404(PlanPost, plan_id)
     form = CreatePostForm(
         title=plan.title,
-        body=plan.body,
-        img_url=plan.img_url,
-        
+        body=plan.body                                                                                                                                                                                                                                                                            
     )
-    if form.main_option.data == 'sparkle':
-        form.sub_option.choices = [('spring', 'Spring'), ('summer', 'Summer'), ('autumn', 'Autumn'),('winter', 'Winter')]
-    elif form.main_option.data == 'hobby':
-        form.sub_option.choices = [('crochet', 'Crochet'), ('sewing', 'Sewing'),('sashiko','Sashiko')]
-    elif form.main_option.data == 'self-explore':
-        form.sub_option.choices = [('books', 'Books'), ('courses', 'Courses'),('professional','Professional related')]
 
     if form.validate_on_submit():
         if form.img.data:
@@ -466,7 +469,8 @@ def plan_to_post(plan_id):
             file.save(file_path)
             img_url = f'uploads/{filename}'
         else:
-            plan.img_url = f'assets/img/home-bg2.png'
+            img_url = plan.img_url
+
             
         new_post = BlogPost(
             title=form.title.data,
@@ -498,6 +502,24 @@ def delete_plan(plan_id):
     db.session.delete(post_to_delete)
     db.session.commit()
     return redirect(url_for('get_all_posts'))
+
+@app.route("/delete-comment-post/<int:comment_id>/<int:post_id>", methods=["POST"])
+def delete_comment_post(comment_id,post_id):
+    # Get the comment by ID
+    comment_to_delete = db.get_or_404(Comment, comment_id)
+    db.session.delete(comment_to_delete)
+    db.session.commit()
+    return redirect(url_for('show_post',post_id=post_id))
+
+
+@app.route("/delete-comment-plan/<int:comment_id>/<int:plan_id>", methods=["POST"])
+def delete_comment_plan(comment_id,plan_id):
+    # Get the comment by ID
+    comment_to_delete = db.get_or_404(Comment, comment_id)
+    db.session.delete(comment_to_delete)
+    db.session.commit()
+    return redirect(url_for('show_plan',plan_id=plan_id))
+
 
 @app.route("/about")
 def about():

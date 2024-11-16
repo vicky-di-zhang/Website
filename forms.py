@@ -25,7 +25,7 @@ class CreatePostForm(FlaskForm):
         ],
         validators=[DataRequired()]
     )
-    sub_option = SelectField('Sub-category ', choices=[])
+    sub_option = SelectField('Sub-category ', choices=[('spring', 'Spring'), ('summer', 'Summer'), ('autumn', 'Autumn'),('winter', 'Winter'),('books', 'Books'), ('courses', 'Courses'),('professional','Professional related')],validators=[DataRequired()])
     body = CKEditorField("Content", validators=[DataRequired()])
     submit = SubmitField("Submit")
 
@@ -46,7 +46,7 @@ class LoginForm(FlaskForm):
 
 class CommentForm(FlaskForm):
     body =  CKEditorField("Comment", validators=[DataRequired()])
-    submit = SubmitField(label="SUbmit comment")
+    submit = SubmitField(label="Submit comment")
     
 class LoginbuttonForm(FlaskForm):
     submit = SubmitField(label="Login")
